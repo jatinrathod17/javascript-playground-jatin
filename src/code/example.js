@@ -68,12 +68,12 @@ const userObj = {
     console.log("Display Age", this.age);
   },
   showAge: () => {
-    console.log("Show Age 1", age);
+    console.log("Show Age", age);
   }
 };
 
-userObj.displayAge();
-userObj.showAge();
+// userObj.displayAge();
+// userObj.showAge();
 
 /**
  * @param {number[]} nums
@@ -112,4 +112,111 @@ const sumOfUnequalArray = (array1, array2) => {
   return a.map((num, idx) => num + (b[idx] || 0));
 };
 
-console.log(sumOfUnequalArray([1, 2, 3, 4], [5, 6, 7, 8, 100]));
+// console.log(sumOfUnequalArray([1, 2, 3, 4], [5, 6, 7, 8, 100]));
+
+// Call, Apply, Bind
+
+let player = {
+  firstName: "Virat",
+  lastName: "Kohli"
+};
+
+let playerInfo = function (location) {
+  // console.log(`${this.firstName} ${this.lastName}, ${location}`);
+};
+
+playerInfo.call(player, "Delhi");
+playerInfo.apply(player, ["Ahmedabad"]);
+
+let newPlayerInfo = playerInfo.bind(player, "Jamnagar");
+newPlayerInfo();
+
+// Increment / Decrement
+// let count = 0;
+// let increaseButton = document.getElementById("increment");
+// let decreaseButton = document.getElementById("decrement");
+// let counter = document.getElementById("counter");
+
+// increaseButton.addEventListener("click", function () {
+//   count++;
+//   counter.innerHTML = count;
+// });
+
+// decreaseButton.addEventListener("click", function () {
+//   count--;
+//   counter.innerHTML = count;
+// });
+
+// <button id="increment">Increment</button>
+// <button id="decrement">Decrement</button>
+// <p id="counter"></p>
+
+{
+  /* <h2>Auto Increment Counter</h2>
+<p id="count">0</p>
+<button id="startButton">Start</button>
+<button id="pauseButton">Pause</button>
+
+const countElement = document.getElementById("count");
+const startButton = document.getElementById("startButton");
+const pauseButton = document.getElementById("pauseButton");
+
+let count = 0;
+let valid = null;
+
+startButton.addEventListener("click", function () {
+  if (valid === null) {
+    valid = setInterval(function () {
+      count++;
+      countElement.textContent = count;
+    }, 1000);
+  }
+});
+
+pauseButton.addEventListener("click", function () {
+  clearInterval(valid);
+  valid = null;
+}); */
+}
+
+// function fetchData() {
+//   return new Promise((resolve, reject) => {
+//     const data = "Success";
+//     if (data) {
+//       resolve("Resolved");
+//     } else {
+//       reject("Error");
+//     }
+//   });
+// }
+
+// fetchData()
+//   .then(res => console.log(res))
+//   .catch(error => console.log(error));
+
+// async function main() {
+//   try {
+//     const data = await fetchData();
+//     console.log("Async Await", data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// main();
+
+// function isValidEmail(email) {
+//   const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+//   return emailRegex.test(email);
+// }
+
+// const enteredEmail = prompt("Enter an email address:");
+// if (isValidEmail(enteredEmail)) {
+//   console.log("Valid email address");
+// } else {
+//   console.log("Invalid email address");
+// }
+
+// let sumM = a => b => b ? sumM(a + b) : a;
+
+// console.log(sumM(1)(2)(3)(4)());
