@@ -1,16 +1,18 @@
+// 1. Scoping of variable
+
 let i = 8;
 const abc = () => {
   i = 10;
 };
-//console.log(i);
+// console.log("1. Scoping of variable", i);
+
+// 2. Currying Example
 
 const multiSum = (a, b) => a + b;
 const currySum = a => b => a + b;
+// console.log("2. Currying Example", multiSum(2, 3), currySum(2)(3));
 
-//console.log("Multi and Curry Sum", multiSum(2, 3), currySum(2)(3));
-
-// Add Numbers
-//A=[1,2,3,4,5,6,7,8,9,10]
+// 3. Array sum with sReduce Method
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const arraySum = numbers => {
   return numbers.reduce((acc, value) => {
@@ -18,9 +20,9 @@ const arraySum = numbers => {
     return acc + value;
   }, 0);
 };
-//console.log("Array sum with sReduce Method", arraySum(array));
+// console.log("3. Array sum with sReduce Method", arraySum(array));
 
-// Flat Array
+// 4. Flat and FlatMap Array
 const mainArray = [1, 2, 3, 4, [4, 5, 6, [8, 9, 10]]];
 //const flatArray = [].concat(...mainArray);
 const flatArray = mainArray.flat(Infinity);
@@ -31,8 +33,9 @@ const objArray = [
 ].flatMap(x => x.attributes);
 // Output => ["Nice", "Cute", "Lovely"]
 
-//console.log("Flat and FlatMap Array", flatArray, flatMapArray, objArray);
+// console.log("4. Flat and FlatMap Array", flatArray, flatMapArray, objArray);
 
+// 5. Closure
 const student = name => {
   const yourGrade = percentage => {
     if (percentage > 35) {
@@ -46,22 +49,20 @@ const student = name => {
 
 const studentInfo = student("Jatin");
 const studentInfo1 = student("Nikunj");
-//studentInfo(70);
-//studentInfo1(32);
+// studentInfo(70);
+// studentInfo1(32);
 
-const promise = new Promise(
-  resolve => {
-    setTimeout(() => {
-      resolve("Promise Resolved");
-    }, 2000);
-  },
-  reject => {}
-);
+// 6. Promise
+const promise = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve("Promise Resolved");
+  }, 2000);
+});
 
-//promise.then((value) => console.log(value));
+// promise.then((value) => console.log(value));
 
+// 7. this Keyword
 var age = 12;
-
 const userObj = {
   age: 15,
   displayAge() {
@@ -75,31 +76,23 @@ const userObj = {
 // userObj.displayAge();
 // userObj.showAge();
 
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-const sum = (nums, target) => {
-  let result = [];
-  let indexMap = new Map();
-
-  for (i = 0; i < nums.length; i++) {
-    let difference = target - nums[i];
-    if (indexMap.has(difference)) {
-      result[0] = indexMap.get(difference);
-      result[1] = i;
-      break;
-    } else {
-      indexMap.set(nums[i], i);
-    }
-  }
-
-  return result;
+// 8. Call, Apply, Bind
+let player = {
+  firstName: "Virat",
+  lastName: "Kohli"
 };
 
-// console.log(sum([2, 4, 1, 15, 7], 9));
+let playerInfo = function (location) {
+  return `${this.firstName} ${this.lastName}, ${location}`;
+};
 
+playerInfo.call(player, "Delhi");
+playerInfo.apply(player, ["Ahmedabad"]);
+
+let newPlayerInfo = playerInfo.bind(player, "Jamnagar");
+// console.log("8. Call, Apply, Bind", newPlayerInfo());
+
+// 9. Sum of Unequal Array
 const sumOfUnequalArray = (array1, array2) => {
   let a, b;
   if (array1.length > array2.length) {
@@ -112,24 +105,7 @@ const sumOfUnequalArray = (array1, array2) => {
   return a.map((num, idx) => num + (b[idx] || 0));
 };
 
-// console.log(sumOfUnequalArray([1, 2, 3, 4], [5, 6, 7, 8, 100]));
-
-// Call, Apply, Bind
-
-let player = {
-  firstName: "Virat",
-  lastName: "Kohli"
-};
-
-let playerInfo = function (location) {
-  // console.log(`${this.firstName} ${this.lastName}, ${location}`);
-};
-
-playerInfo.call(player, "Delhi");
-playerInfo.apply(player, ["Ahmedabad"]);
-
-let newPlayerInfo = playerInfo.bind(player, "Jamnagar");
-newPlayerInfo();
+// console.log("9. Sum of Unequal Array", sumOfUnequalArray([1, 2, 3, 4], [5, 6, 7, 8, 100]));
 
 // Increment / Decrement
 // let count = 0;
